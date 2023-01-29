@@ -26,8 +26,9 @@ rootRouter.use((req, res, next) => {
 
 rootRouter.use((error, req, res, next) => {
     const status = error.status || 500;
-    res.status();
+    res.status(status);
     const body = {
+        status: status,
         message: error.message,
     };
     logs.response(status, body)
