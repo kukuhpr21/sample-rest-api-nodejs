@@ -1,0 +1,35 @@
+{
+  "name": "sample-rest-api-nodejs",
+  "version": "1.0.0",
+  "description": "A Node JS RESTful API Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kukuhpr21/sample-rest-api-nodejs.git"
+  },
+  "keywords": [
+    "node",
+    "restful",
+    "api"
+  ],
+  "author": "Kukuh Prakoso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kukuhpr21/sample-rest-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/kukuhpr21/sample-rest-api-nodejs#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.0.1",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
