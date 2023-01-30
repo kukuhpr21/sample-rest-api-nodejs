@@ -6,8 +6,8 @@ const logs = require('../helpers/logs');
 const v1 = "/v1/";
 
 // routes
-const auths = require('./auths.routes');
-const users = require('./users.routes');
+const auths = require('./auths.route');
+const users = require('./users.route');
 
 // before routing
 rootRouter.use('/', (req, res, next) => {
