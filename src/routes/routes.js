@@ -6,7 +6,7 @@ const logs = require('../helpers/logs');
 const v1 = "/v1/";
 
 // routes
-const users = require('./users');
+const users = require('./users.routes');
 
 // before routing
 rootRouter.use('/', (req, res, next) => {
