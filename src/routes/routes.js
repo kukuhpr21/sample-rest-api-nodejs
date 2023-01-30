@@ -6,6 +6,7 @@ const logs = require('../helpers/logs');
 const v1 = "/v1/";
 
 // routes
+const auths = require('./auths.routes');
 const users = require('./users.routes');
 
 // before routing
@@ -15,6 +16,7 @@ rootRouter.use('/', (req, res, next) => {
 });
 
 // route register v1
+rootRouter.use(v1, auths);
 rootRouter.use(v1 + 'users', users);
 
 // handling error
