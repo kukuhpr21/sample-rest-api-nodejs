@@ -7,7 +7,6 @@ const db = new Sequelize(
        host: process.env.DATABASE_HOST,
        dialect: process.env.DATABASE_DRIVER,
        raw: process.env.DATABASE_RAW,
-       logging: process.env.DATABASE_LOGGING,
      }
 );
 

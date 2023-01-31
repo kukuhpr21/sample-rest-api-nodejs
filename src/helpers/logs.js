@@ -4,6 +4,7 @@ const initRunningService = function () {
     console.log("\n\n\n======================================SERVICE======================================");
     console.log("Name : " + process.env.APP_NAME);
     console.log("Version : " + process.env.APP_VERSION);
+    console.log("Port : " + process.env.APP_PORT);
     console.log("Date : " + new Date());
     console.log("======================================SERVICE======================================");
 }
@@ -21,7 +22,7 @@ const request = function (req) {
     console.log("Method : " + req.method);
     console.log("Content-type : " + req.headers['content-type']);
     console.log("User Agent : " + req.headers['user-agent']);
-    console.log("Body : " + req.body);
+    console.log("Body : " + JSON.stringify(req.body, null, 4));
 }
 
 const response = function (status, body) {

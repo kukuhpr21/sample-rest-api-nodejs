@@ -1,32 +1,42 @@
 const usersRepository = require('../repositories/users.repository');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-class authService {
+const response = require('../helpers/response');
 
-    async login(req) {
-        try {
-            const user = await usersRepository.findByEmail(req.body.email);
+async function login(req) {
+    try {
+        const user = await usersRepository.findByEmail(req.body.email);
+        console.log(user);
+        if (user) {
+            const passwordMatch = await bcrypt.compare(req.body.password, user.password);
 
-            if (user) {
-                const passwordMatch = await bcrypt.compare(req.body.password, user.password);
-
-                if (passwordMatch) {
-
-                } else {
-                    return { success: false, error: "invalid email or password" }
-                }
+            if (passwordMatch) {
+                const token = await this.createToken({
+                    id: user.id,
+                    email: user.email
+                });
+                return response.layer(true, 200, "login successfully", {token: token});
             } else {
-                return { success: false, error: "user not found" }
+                return response.layer(false, 400, "invalid email or password");
             }
-        } catch (error) {
-            return { success: false, error: error };
+        } else {
+            return response.layer(false, 400, "user not found"); 
         }
+    } catch (error) {
+        return response.layer(false,500, "internal server errorxx", { error: error.message });
     }
-
-    async createToken() {
-        
-    }
-
 }
 
-module.exports = authService
+async function createToken(payload) {
+    return jwt.sign(
+        payload, 
+        process.env.JWT_KEY,
+        {
+            expiresIn: process.env.JWT_EXPIRESIN
+        })
+}
+
+module.exports = {
+    login,
+    createToken,
+}
