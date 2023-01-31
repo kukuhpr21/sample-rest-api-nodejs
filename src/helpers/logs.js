@@ -1,5 +1,3 @@
-const { json } = require("express/lib/response");
-
 const initRunningService = async function (database) {
     console.log("\n\n\n======================================SERVICE======================================");
     console.log("Name : " + process.env.APP_NAME);
