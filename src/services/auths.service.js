@@ -6,7 +6,7 @@ const response = require('../helpers/response');
 async function login(req) {
     try {
         const user = await usersRepository.findByEmail(req.body.email);
-        console.log(user);
+
         if (user) {
             const passwordMatch = await bcrypt.compare(req.body.password, user.password);
 
@@ -23,7 +23,7 @@ async function login(req) {
             return response.layer(false, 400, "user not found"); 
         }
     } catch (error) {
-        return response.layer(false,500, "internal server errorxx", { error: error.message });
+        return response.layer(false, 500, "internal server error", { error: error.message });
     }
 }
 

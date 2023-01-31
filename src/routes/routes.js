@@ -7,7 +7,7 @@ const v1 = "/v1/";
 
 // routes
 const auths = require('./auths.route');
-const users = require('./users.route');
+const products = require('./products.route');
 
 // before routing
 rootRouter.use('/', (req, res, next) => {
@@ -17,7 +17,7 @@ rootRouter.use('/', (req, res, next) => {
 
 // route register v1
 rootRouter.use(v1, auths);
-rootRouter.use(v1 + 'users', users);
+rootRouter.use(v1 + 'products', products);
 
 // handling error
 rootRouter.use((req, res, next) => {
