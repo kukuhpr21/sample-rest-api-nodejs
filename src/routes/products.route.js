@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const authorization = require('../middlewares/authorization.middleware');
+const authorization = require('../middleware/authorization.middleware');
 const productController = require('../controllers/products.controller');
 
 // get all data
